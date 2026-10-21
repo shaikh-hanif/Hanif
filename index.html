@@ -66,6 +66,11 @@
   .job li { margin: 7px 0; padding-left: 2px; }
   .job li::marker { color: var(--muted); }
 
+  /* Project and award */
+  .project h3 { font-family: var(--head); font-weight: 600; font-size: 1.35rem; line-height: 1.3; margin: 0; color: var(--ink); }
+  .project .when { margin: 2px 0 10px; color: var(--muted); font-size: .96rem; }
+  .project p:last-child { margin-bottom: 0; max-width: 70ch; }
+
   /* Skills */
   dl.skills { margin: 0; border-top: 1px solid var(--rule); }
   .skills .row { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 8px 28px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
@@ -111,8 +116,7 @@
         <li><span>Email</span><a href="mailto:ilyasmohammed661@gmail.com">ilyasmohammed661@gmail.com</a></li>
         <li><span>Phone</span><a href="tel:+919167042955">+91 9167042955</a></li>
         <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/hanif-shaikh-0b3500125" target="_blank" rel="noopener">linkedin.com/in/hanif-shaikh-0b3500125</a></li>
-        <li><span>Portfolio</span><a href="https://hanif-shaikh-soenogc.gamma.site/" target="_blank" rel="noopener">hanif-shaikh-soenogc.gamma.site</a></li>
-      </ul>
+        <li><span>Portfolio</span><a href="https://hanif-shaikh-soenogc.gamma.site/" target="_blank" rel="noopener">hanif-shaikh-soenogc.gamma.site</a></li>      </ul>
     </div>
   </aside>
 
@@ -154,6 +158,23 @@
       </ol>
     </section>
 
+    <section aria-labelledby="projects">
+      <h2 id="projects">Project</h2>
+      <article class="project">
+        <h3>AWS VPC peering</h3>
+        <p class="when">Neotas Development Pvt. Ltd.</p>
+        <p>Connected separate AWS VPCs with VPC peering so cloud resources could communicate privately over internal IP addresses, without sending traffic over the public internet. Alongside the VPN connectivity I managed, this gave developers and remote users secure access to cloud resources.</p>
+      </article>
+    </section>
+
+    <section aria-labelledby="awards">
+      <h2 id="awards">Award</h2>
+      <article class="project">
+        <h3>Innovator Award</h3>
+        <p class="when">Neotas Development Pvt. Ltd., March 2022</p>
+      </article>
+    </section>
+
     <section aria-labelledby="skills">
       <h2 id="skills">Skills</h2>
       <dl class="skills">
@@ -169,8 +190,8 @@
     <section aria-labelledby="education">
       <h2 id="education">Certifications and education</h2>
       <ul class="plain">
-        <li>ITIL 4 Foundation</li>
-        <li>Generative AI (upGrad)</li>
+        <li>ITIL 4 Foundation (PeopleCert)</li>
+        <li>Generative AI (upGrad and Microsoft)</li>
         <li>System Administrator (Aptech)</li>
         <li>Hardware Specialist (Aptech)</li>
         <li>B.Com, University of Mumbai, 2017 to 2020</li>
