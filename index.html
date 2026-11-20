@@ -1,206 +1,132 @@
-<!DOCTYPE html>
+from pathlib import Path
+
+html = r'''<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hanif Shaikh | IT Support Engineer</title>
-<meta name="description" content="Hanif Shaikh, IT Support Engineer (L1/L2) with 4.7 years of experience in Microsoft 365, Entra ID, Intune, Kandji (Iru), Jira and AWS. Open to relocation to Europe.">
+<meta name="theme-color" content="#080d18">
+<title>Hanif Shaikh | IT Operations & Microsoft 365 Systems Administrator</title>
+<meta name="description" content="Mohammed Hanif Shaikh — IT Operations and Microsoft 365 Systems Administrator with 4.7 years of experience across Microsoft 365, Entra ID, endpoint management, AWS and Atlassian administration.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --ink: #12233d;
-    --ink-soft: #c9d3e3;
-    --paper: #f4f6f9;
-    --text: #1b2433;
-    --muted: #4a5568;
-    --rule: #d5dce7;
-    --signal: #12805c;
-    --signal-glow: #5fd3a6;
-    --body: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
-    --head: "IBM Plex Sans Condensed", "Arial Narrow", "IBM Plex Sans", system-ui, sans-serif;
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { margin: 0; font-family: var(--body); font-size: 1.0625rem; line-height: 1.65; color: var(--text); background: var(--paper); }
-  a { color: inherit; }
-  a:focus-visible { outline: 3px solid var(--signal); outline-offset: 3px; border-radius: 2px; }
-
-  .layout { display: grid; grid-template-columns: 340px minmax(0, 1fr); min-height: 100vh; }
-
-  /* Side panel */
-  .panel { background: var(--ink); color: #fff; padding: 56px 36px; }
-  .panel-inner { position: sticky; top: 56px; }
-  .panel h1 { font-family: var(--head); font-weight: 700; font-size: 3rem; line-height: 1.02; letter-spacing: -0.01em; margin: 0 0 14px; }
-  .role { font-size: 1.1rem; margin: 0 0 4px; font-weight: 500; }
-  .place { margin: 0 0 22px; color: var(--ink-soft); font-size: .98rem; }
-  .status { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px 8px 12px; border: 1px solid rgba(255,255,255,.22); border-radius: 999px; font-size: .95rem; margin-bottom: 34px; }
-  .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--signal-glow); box-shadow: 0 0 0 0 rgba(95,211,166,.6); animation: ping 2.4s ease-out infinite; }
-  @keyframes ping { 0% { box-shadow: 0 0 0 0 rgba(95,211,166,.55); } 70%, 100% { box-shadow: 0 0 0 10px rgba(95,211,166,0); } }
-  .contact { list-style: none; margin: 0; padding: 0; font-size: .98rem; }
-  .contact li { padding: 11px 0; border-top: 1px solid rgba(255,255,255,.16); }
-  .contact li:last-child { border-bottom: 1px solid rgba(255,255,255,.16); }
-  .contact span { display: block; color: var(--ink-soft); font-size: .86rem; }
-  .contact a { text-decoration: none; word-break: break-word; }
-  .contact a:hover { text-decoration: underline; text-underline-offset: 4px; }
-  .panel a:focus-visible { outline-color: var(--signal-glow); }
-
-  /* Content */
-  main { padding: 64px 56px 80px; max-width: 920px; }
-  section { margin-bottom: 60px; }
-  h2 { font-family: var(--head); font-weight: 600; font-size: 1.75rem; line-height: 1.2; margin: 0 0 20px; color: var(--ink); }
-  .lead { font-size: 1.2rem; line-height: 1.6; max-width: 62ch; margin: 0; }
-
-  /* Timeline */
-  .jobs { position: relative; margin: 0; padding: 0 0 0 28px; list-style: none; }
-  .jobs::before { content: ""; position: absolute; left: 5px; top: 8px; bottom: 8px; width: 2px; background: var(--rule); }
-  .job { position: relative; padding-bottom: 38px; }
-  .job:last-child { padding-bottom: 0; }
-  .job::before { content: ""; position: absolute; left: -28px; top: 9px; width: 12px; height: 12px; border-radius: 50%; background: var(--paper); border: 3px solid var(--ink); }
-  .job.now::before { background: var(--signal); border-color: var(--signal); }
-  .job h3 { font-family: var(--head); font-weight: 600; font-size: 1.35rem; line-height: 1.3; margin: 0; color: var(--ink); }
-  .job .org { margin: 2px 0 0; font-weight: 500; }
-  .job .when { margin: 2px 0 14px; color: var(--muted); font-size: .96rem; }
-  .job ul { margin: 0; padding-left: 20px; max-width: 70ch; }
-  .job li { margin: 7px 0; padding-left: 2px; }
-  .job li::marker { color: var(--muted); }
-
-  /* Project and award */
-  .project h3 { font-family: var(--head); font-weight: 600; font-size: 1.35rem; line-height: 1.3; margin: 0; color: var(--ink); }
-  .project .when { margin: 2px 0 10px; color: var(--muted); font-size: .96rem; }
-  .project p:last-child { margin-bottom: 0; max-width: 70ch; }
-
-  /* Skills */
-  dl.skills { margin: 0; border-top: 1px solid var(--rule); }
-  .skills .row { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 8px 28px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
-  .skills dt { font-weight: 600; color: var(--ink); }
-  .skills dd { margin: 0; }
-
-  /* Education */
-  .plain { margin: 0; padding-left: 20px; }
-  .plain li { margin: 6px 0; }
-
-  footer { color: var(--muted); font-size: .9rem; padding-top: 8px; }
-
-  @media (max-width: 900px) {
-    .layout { grid-template-columns: 1fr; }
-    .panel { padding: 40px 24px 32px; }
-    .panel-inner { position: static; }
-    .panel h1 { font-size: 2.5rem; }
-    .status { margin-bottom: 26px; }
-    main { padding: 44px 24px 64px; }
-  }
-  @media (max-width: 560px) {
-    .skills .row { grid-template-columns: 1fr; gap: 2px; }
-    body { font-size: 1rem; }
-    .lead { font-size: 1.1rem; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .dot { animation: none; }
-    html { scroll-behavior: auto; }
-  }
+:root{--bg:#080d18;--panel:#111b2e;--text:#f4f7fc;--muted:#a5b2c7;--line:rgba(160,190,235,.15);--blue:#7eb8ff;--cyan:#75e0e5;--max:1120px;--body:"DM Sans",system-ui,sans-serif;--display:"Manrope",system-ui,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:84px}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.7 var(--body);overflow-x:hidden}a{color:inherit;text-decoration:none}a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
+.ambient{position:fixed;inset:0;z-index:-3;background:radial-gradient(ellipse at 15% 10%,rgba(30,91,158,.23),transparent 42%),radial-gradient(ellipse at 85% 55%,rgba(22,111,135,.13),transparent 38%),linear-gradient(180deg,#080d18,#0a1120 55%,#080d18);pointer-events:none}#network{position:fixed;inset:0;width:100%;height:100%;z-index:-2;pointer-events:none;opacity:.72}
+.container{width:min(var(--max),calc(100% - 48px));margin:auto}.nav{position:fixed;z-index:10;top:0;left:0;right:0;border-bottom:1px solid transparent;transition:.3s}.nav.scrolled{background:rgba(7,12,22,.82);backdrop-filter:blur(18px);border-color:var(--line)}.nav-inner{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font:800 21px var(--display);letter-spacing:-.06em}.brand span{color:var(--blue)}.nav-links{display:flex;gap:25px;color:#c4cede;font-size:13px}.nav-links a:hover,.nav-links a.active{color:#fff}.nav-cta,.button{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid rgba(126,184,255,.38);border-radius:99px;padding:11px 18px;background:rgba(55,112,178,.14);font-size:13px;font-weight:600;transition:.25s}.nav-cta:hover,.button:hover{transform:translateY(-2px);border-color:var(--blue);background:rgba(55,112,178,.25)}.menu-btn{display:none;background:none;border:1px solid var(--line);color:white;border-radius:50%;width:42px;height:42px;font-size:20px}
+.hero{min-height:100svh;display:flex;align-items:center;padding:130px 0 90px;position:relative}.hero-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:60px;align-items:center}.eyebrow,.kicker{color:var(--cyan);font-size:11px;letter-spacing:.17em;text-transform:uppercase;font-weight:700}.eyebrow:before{content:"";display:inline-block;width:25px;height:1px;background:var(--cyan);vertical-align:middle;margin-right:10px}.hero h1{font:800 clamp(54px,8vw,96px)/.98 var(--display);letter-spacing:-.075em;margin:24px 0 20px}.accent{background:linear-gradient(100deg,#f8fbff,#8fc4ff 55%,#78e0e4);-webkit-background-clip:text;background-clip:text;color:transparent}.hero-role{font:600 clamp(19px,2.5vw,27px)/1.4 var(--display);letter-spacing:-.04em;color:#d7e2f2;max-width:650px}.hero-copy{font-size:17px;color:var(--muted);max-width:600px}.hero-actions,.hero-meta,.contact-links{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.button.primary{background:linear-gradient(110deg,#367ac0,#277f98);border-color:transparent}.button.secondary{background:rgba(255,255,255,.035);border-color:var(--line)}.hero-meta{margin-top:30px;color:#9aa9bf;font-size:12px;gap:18px}.pulse{display:inline-block;width:7px;height:7px;border-radius:50%;background:#70dfb0;box-shadow:0 0 0 5px rgba(112,223,176,.1);margin-right:7px}
+.orbit-wrap{width:min(100%,340px);aspect-ratio:1;justify-self:center;position:relative;display:grid;place-items:center}.orbit{position:absolute;inset:7%;border:1px solid rgba(126,184,255,.2);border-radius:50%;animation:spin 34s linear infinite}.orbit:before,.orbit:after{content:"";position:absolute;width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 20px var(--cyan)}.orbit:before{top:14%;left:18%}.orbit:after{right:7%;bottom:25%;background:var(--blue)}.orbit.two{inset:19%;border-style:dashed;animation-direction:reverse;animation-duration:45s}.orbit.three{inset:31%;border-color:rgba(117,224,229,.25);animation-duration:28s}.core{width:43%;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 30%,rgba(102,174,245,.28),rgba(18,45,76,.55) 55%,rgba(8,15,27,.9));border:1px solid rgba(150,205,255,.3);box-shadow:0 0 90px rgba(56,143,206,.17);font:800 55px var(--display);letter-spacing:-.08em}.orbit-label{position:absolute;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#9eb6d5}.l1{top:2%;left:42%}.l2{right:-3%;top:49%}.l3{bottom:5%;left:28%}@keyframes spin{to{transform:rotate(360deg)}}
+section{padding:100px 0;scroll-margin-top:75px}.section-head{max-width:760px;margin-bottom:42px}.section-head h2,.contact-panel h2{font:700 clamp(34px,5vw,56px)/1.08 var(--display);letter-spacing:-.065em;margin:12px 0 17px}.section-intro{font-size:17px;color:var(--muted);max-width:700px}.about-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:55px}.about-copy{font-size:18px;color:#d3deed;line-height:1.8}.about-copy strong{color:white}.fact-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.fact,.skill-card,.project{border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,rgba(20,35,58,.72),rgba(11,19,33,.48));padding:22px}.fact b{display:block;font:800 31px var(--display);letter-spacing:-.06em}.fact span{font-size:12px;color:var(--muted)}
+.timeline{position:relative;margin-left:8px;padding-left:36px}.timeline:before{content:"";position:absolute;left:5px;top:8px;bottom:8px;width:1px;background:linear-gradient(var(--blue),rgba(126,184,255,.08))}.experience{position:relative;padding-bottom:50px}.experience:last-child{padding-bottom:0}.experience:before{content:"";position:absolute;left:-37px;top:8px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--cyan);box-shadow:0 0 16px rgba(117,224,229,.4)}.exp-top{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}.experience h3,.skill-card h3,.project h3{font:600 21px var(--display);letter-spacing:-.04em;margin:0 0 5px}.company{color:#c9d9ed;font-weight:600}.date{color:#90a0b8;font-size:13px}.exp-summary{color:var(--muted);max-width:850px;margin:14px 0}.clean{padding-left:20px;color:#c3cfdf;max-width:900px}.clean li{padding:4px 0}.clean li::marker{color:var(--cyan)}
+.skills-grid,.project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.skill-card,.project{transition:transform .3s,border-color .3s}.skill-card:hover,.project:hover{transform:translateY(-4px);border-color:rgba(126,184,255,.42)}.skill-icon{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;color:var(--cyan);background:rgba(117,224,229,.1);margin-bottom:16px}.skill-card p,.project p{font-size:14px;color:var(--muted);margin:0}.project{min-height:205px}.project .number{font-size:10px;color:var(--cyan);letter-spacing:.16em}.project h3{margin:13px 0 8px}.tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:15px}.tag{font-size:11px;color:#b9d4f3;padding:4px 9px;border-radius:99px;border:1px solid rgba(126,184,255,.18)}
+.achievement-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.achievement{padding:22px 18px;border-top:1px solid rgba(126,184,255,.45);background:linear-gradient(180deg,rgba(24,43,68,.55),transparent);border-radius:4px 4px 14px 14px}.achievement strong{display:block;font:800 clamp(27px,4vw,40px) var(--display);letter-spacing:-.07em}.achievement span{display:block;font-size:12px;color:var(--muted);margin-top:5px}
+.credentials{display:grid;grid-template-columns:1fr 1fr;gap:0 25px}.credential{display:flex;justify-content:space-between;gap:15px;padding:16px 0;border-bottom:1px solid var(--line)}.credential b{font-weight:600}.credential span{font-size:13px;color:var(--muted);text-align:right}.contact-panel{border:1px solid rgba(126,184,255,.23);border-radius:26px;padding:clamp(28px,6vw,65px);background:radial-gradient(ellipse at 80% 0%,rgba(48,125,177,.18),transparent 45%),linear-gradient(135deg,rgba(18,34,57,.9),rgba(10,17,29,.85))}.contact-panel p{color:var(--muted);max-width:650px}.footer{padding:30px 0 40px;color:#75859d;font-size:12px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}.reveal.visible{opacity:1;transform:none}.delay-1{transition-delay:.1s}.delay-2{transition-delay:.2s}.delay-3{transition-delay:.3s}
+@media(max-width:850px){.hero-grid{grid-template-columns:1fr;gap:25px}.orbit-wrap{width:245px;justify-self:start;grid-row:1}.about-layout{grid-template-columns:1fr;gap:25px}.achievement-grid{grid-template-columns:repeat(2,1fr)}.nav-links{gap:14px}}
+@media(max-width:650px){.container{width:calc(100% - 36px)}.nav-inner{height:65px}.menu-btn{display:block}.nav-cta{display:none}.nav-links{display:none;position:absolute;top:64px;left:0;right:0;padding:20px 24px;background:rgba(7,12,22,.97);border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start}.nav-links.open{display:flex}.hero{padding-top:115px}.hero h1{font-size:clamp(51px,15vw,72px)}section{padding:75px 0}.skills-grid,.project-grid,.credentials{grid-template-columns:1fr}.credential{flex-direction:column;gap:2px}.credential span{text-align:left}.achievement{padding:17px 13px}.fact{padding:16px}.fact b{font-size:27px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
 <body>
-<div class="layout">
+<div class="ambient"></div><canvas id="network" aria-hidden="true"></canvas>
+<header class="nav" id="top"><div class="container nav-inner">
+<a class="brand" href="#top">HS<span>.</span></a>
+<nav class="nav-links" id="navLinks" aria-label="Main navigation"><a href="#about">About</a><a href="#experience">Experience</a><a href="#expertise">Expertise</a><a href="#projects">Projects</a><a href="#credentials">Credentials</a></nav>
+<a class="nav-cta" href="#contact">Let's connect ↗</a><button class="menu-btn" id="menuBtn" aria-label="Open navigation" aria-expanded="false">☰</button>
+</div></header>
+<main>
+<section class="hero"><div class="container hero-grid">
+<div class="reveal visible"><div class="eyebrow">IT Operations · Systems Administration</div>
+<h1>Mohammed<br><span class="accent">Hanif Shaikh.</span></h1>
+<p class="hero-role">IT Operations & Microsoft 365 Systems Administrator</p>
+<p class="hero-copy">Connecting people, systems and technology through reliable IT operations, identity management and cloud infrastructure.</p>
+<div class="hero-actions"><a class="button primary" href="#experience">Explore my experience ↘</a><a class="button secondary" href="mailto:ilyasmohammed661@gmail.com?subject=Request%20for%20CV">Request my CV ↗</a></div>
+<div class="hero-meta"><span><i class="pulse"></i>Open to Europe / UK relocation</span><span>⌖ Mumbai, India</span><span>4.7 years' experience</span></div></div>
+<div class="orbit-wrap reveal delay-2" aria-label="Connected technology ecosystem"><div class="orbit"><span class="orbit-label l1">Identity</span></div><div class="orbit two"></div><div class="orbit three"></div><div class="core">HS</div><span class="orbit-label l2">Cloud</span><span class="orbit-label l3">Operations</span></div>
+</div></section>
 
-  <aside class="panel">
-    <div class="panel-inner">
-      <h1>Hanif Shaikh</h1>
-      <p class="role">IT Support Engineer (L1/L2)</p>
-      <p class="place">Based in Mumbai, India</p>
-      <p class="status"><span class="dot" aria-hidden="true"></span>Open to relocation to Europe</p>
+<section id="about"><div class="container"><div class="section-head reveal"><div class="kicker">01 / Professional profile</div><h2>Technology works best when everything connects.</h2></div>
+<div class="about-layout"><p class="about-copy reveal">I am an IT Operations and Microsoft 365 Systems Administrator with <strong>4.7 years of experience</strong> supporting distributed, international teams. My work spans Microsoft 365 and Entra ID administration, endpoint management, AWS access and developer environments, and Atlassian service platforms. I helped build a startup's IT infrastructure from the ground up and led a team of four support engineers.</p>
+<div class="fact-grid"><div class="fact reveal"><b>4.7 yrs</b><span>IT operations experience</span></div><div class="fact reveal delay-1"><b>~200</b><span>Users supported at Neotas</span></div><div class="fact reveal delay-2"><b>4</b><span>Engineers led and mentored</span></div><div class="fact reveal delay-3"><b>Global</b><span>Distributed team support</span></div></div></div></div></section>
 
-      <ul class="contact">
-        <li><span>Email</span><a href="mailto:ilyasmohammed661@gmail.com">ilyasmohammed661@gmail.com</a></li>
-        <li><span>Phone</span><a href="tel:+919167042955">+91 9167042955</a></li>
-        <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/hanif-shaikh-0b3500125" target="_blank" rel="noopener">linkedin.com/in/hanif-shaikh-0b3500125</a></li>
-        <li><span>Portfolio</span><a href="https://hanif-shaikh-soenogc.gamma.site/" target="_blank" rel="noopener">hanif-shaikh-soenogc.gamma.site</a></li>      </ul>
-    </div>
-  </aside>
+<section id="experience"><div class="container"><div class="section-head reveal"><div class="kicker">02 / Career journey</div><h2>Building dependable IT operations.</h2><p class="section-intro">Hands-on administration, user experience and service reliability across a global consulting environment and a growing technology company.</p></div>
+<div class="timeline">
+<article class="experience reveal"><div class="exp-top"><div><h3>IT Support Engineer (L1/L2)</h3><div class="company">SIA Partners · Mumbai, India</div></div><div class="date">1 Sep 2026 — Present</div></div>
+<p class="exp-summary">International IT operations and endpoint administration for colleagues in France, the USA and other regions, working across time zones.</p>
+<ul class="clean"><li>Resolve 80–100+ tickets per week in Freshservice within agreed service-level agreements.</li><li>Administer Windows endpoints in Microsoft Intune and manage Apple device provisioning, deployment, asset tracking and lifecycle in Kandji (Iru).</li><li>Handle Microsoft 365 and Entra ID requests, onboarding, offboarding and access requests.</li><li>Create knowledge-base articles and technical documentation to support consistent service delivery.</li></ul></article>
+<article class="experience reveal"><div class="exp-top"><div><h3>Senior Technical Support Engineer</h3><div class="company">Neotas Development Pvt. Ltd. · Mumbai, India</div></div><div class="date">Dec 2021 — Jun 2026</div></div>
+<p class="exp-summary">Joined as the sole IT support resource and helped build IT infrastructure and support operations from the ground up with the IT manager. Supported approximately 200 developers, QA engineers and testers across Mumbai, Delhi and Pune, plus UK and US consultants.</p>
+<ul class="clean">
+<li><strong>Microsoft 365 & identity:</strong> Held Global Administrator responsibilities across Exchange Online, SharePoint Online, OneDrive, Teams and Entra ID; managed accounts, licences, groups, permissions, distribution lists and user lifecycle.</li>
+<li><strong>Security:</strong> Designed and enforced Conditional Access and MFA controls, conducted access reviews and managed shared admin credentials in Zoho Vault.</li>
+<li><strong>Endpoint management:</strong> Deployed three applications and configured compliance and configuration policies in Intune; supported Windows, macOS, iOS and Apple Business Manager.</li>
+<li><strong>Atlassian administration:</strong> Administered Jira, Jira Service Management and Confluence, including projects, workflows, issue types, screens, fields, project roles, permission schemes, automation, dashboards and SOP documentation.</li>
+<li><strong>AWS & cloud:</strong> Administered IAM policies and developer access; managed IAM Identity Center users and SSO; supported EC2 and S3 access; managed AWS WorkSpaces with Directory Services for 30–40 developers; contributed to VPC peering and VPN work.</li>
+<li><strong>Network & operations:</strong> Managed TP-Link Omada controller Wi-Fi across Mumbai, Delhi and Pune; coordinated hardware and internet providers, procurement and asset inventory.</li>
+<li><strong>Developer support:</strong> Troubleshot Linux-based WorkSpaces, VS Code setup and SSO; provisioned MongoDB and PostgreSQL access.</li>
+<li><strong>Service delivery & leadership:</strong> Handled 150–200 tickets per week at peak, worked to resolve critical issues within a 2-hour SLA, and led and mentored four support engineers.</li>
+</ul></article></div></div></section>
 
-  <main>
-    <section aria-labelledby="about">
-      <h2 id="about">About</h2>
-      <p class="lead">I have 4.7 years of experience supporting distributed teams across Europe, the USA, APAC and Canada, in both a startup and a global consulting firm. I work hands-on with Microsoft 365, Entra ID, Intune, Kandji (Iru), Jira administration and AWS access management. Innovator Award recipient. English C2, German A1.</p>
-    </section>
+<section id="expertise"><div class="container"><div class="section-head reveal"><div class="kicker">03 / Technical expertise</div><h2>A connected ecosystem of systems.</h2><p class="section-intro">Platforms and operational disciplines across identity, collaboration, cloud, endpoints and service management.</p></div>
+<div class="skills-grid">
+<article class="skill-card reveal"><div class="skill-icon">✳</div><h3>Microsoft 365 & Collaboration</h3><p>Exchange Online, Outlook, Teams, SharePoint Online, OneDrive, licensing, groups, distribution lists, mailbox and collaboration support.</p></article>
+<article class="skill-card reveal delay-1"><div class="skill-icon">⌘</div><h3>Identity & Access</h3><p>Microsoft Entra ID, SSO, MFA, Conditional Access, access reviews, AWS IAM Identity Center and Azure AD Connect identity synchronisation (working knowledge).</p></article>
+<article class="skill-card reveal delay-2"><div class="skill-icon">▣</div><h3>Endpoint & Device Management</h3><p>Microsoft Intune, Kandji (Iru), Apple Business Manager, Windows, macOS, iOS, application deployment, compliance and configuration policies.</p></article>
+<article class="skill-card reveal delay-3"><div class="skill-icon">☁</div><h3>Cloud & Infrastructure</h3><p>AWS EC2, S3, IAM, WorkSpaces, VPC peering, VPN, TP-Link Omada Wi-Fi, TCP/IP, DNS and DHCP.</p></article>
+<article class="skill-card reveal"><div class="skill-icon">◈</div><h3>Atlassian & ITSM</h3><p>Jira administration, Jira Service Management, workflows, permissions, automation, dashboards, Confluence SOPs, Freshservice and ITIL 4.</p></article>
+<article class="skill-card reveal delay-1"><div class="skill-icon">⚙</div><h3>Automation & Governance</h3><p>Jira Automation, PowerShell (working knowledge), Group Policy and SCCM (working knowledge), incident and problem management, RCA, SLA management and Zoho Vault.</p></article>
+</div></div></section>
 
-    <section aria-labelledby="experience">
-      <h2 id="experience">Experience</h2>
-      <ol class="jobs">
-        <li class="job now">
-          <h3>IT Support Engineer, L1/L2</h3>
-          <p class="org">SIA Partners, Mumbai</p>
-          <p class="when">Sep 2026 to present. International IT helpdesk with colleagues in France and the US, on 24x7 rotational shifts.</p>
-          <ul>
-            <li>Close 80-100+ tickets per week in Freshservice for end users worldwide, through the ticketing system, phone and Teams.</li>
-            <li>Handle account creation, access rights and software installation in Microsoft 365 and Entra ID.</li>
-            <li>Support VIP users, deploy Windows and Mac workstations, and support Intune and Kandji (Iru) device management.</li>
-            <li>Document procedures through Freshservice solutions and keep users updated on incident status across time zones.</li>
-          </ul>
-        </li>
-        <li class="job">
-          <h3>Senior Technical Support Engineer</h3>
-          <p class="org">Neotas Development Pvt. Ltd., Mumbai</p>
-          <p class="when">Dec 2021 to Jun 2026. Startup supporting users in the UK, US, Mumbai, Pune and Delhi.</p>
-          <ul>
-            <li>Joined as the sole IT support person, handling 150-200 tickets per week.</li>
-            <li>After about two years, a team of 4 support engineers joined. I led and mentored them and reduced escalations by 50% through shared runbooks and root cause fixes.</li>
-            <li>Resolved critical issues within a 2-hour SLA and provided VIP and executive support.</li>
-            <li>Managed the user lifecycle for about 200 users in Microsoft 365 and Entra ID, enforced Conditional Access and MFA, and deployed 3 applications through Intune.</li>
-            <li>Reduced Microsoft licence billing by &euro;1,000-2,000 and AWS billing by about $500.</li>
-            <li>Administered AWS IAM, Identity Center, EC2, S3 and Git access, and provisioned AWS WorkSpaces for 30-40 developers.</li>
-            <li>Administered Jira and Jira Service Management, troubleshot Airflow, and provided PostgreSQL and MongoDB access.</li>
-            <li>Managed the office network (TP-Link Omada, 6 access points), vendor management and IT procurement.</li>
-          </ul>
-        </li>
-      </ol>
-    </section>
+<section id="projects"><div class="container"><div class="section-head reveal"><div class="kicker">04 / Selected initiatives</div><h2>Practical work. Measurable operations.</h2><p class="section-intro">Examples of systems administration and operational improvements from my professional experience.</p></div>
+<div class="project-grid">
+<article class="project reveal"><div class="number">01 / IDENTITY SECURITY</div><h3>Microsoft 365 security controls</h3><p>Designed and enforced Conditional Access and MFA controls across the Microsoft 365 tenant for approximately 200 users, supported by access reviews and credential management in Zoho Vault.</p><div class="tags"><span class="tag">Entra ID</span><span class="tag">MFA</span><span class="tag">Conditional Access</span></div></article>
+<article class="project reveal delay-1"><div class="number">02 / CLOUD ACCESS</div><h3>AWS developer environments</h3><p>Provisioned AWS WorkSpaces with Directory Services for 30–40 developers, using IAM Identity Center SSO and IAM policy-based access.</p><div class="tags"><span class="tag">AWS WorkSpaces</span><span class="tag">IAM</span><span class="tag">SSO</span></div></article>
+<article class="project reveal delay-2"><div class="number">03 / SERVICE MANAGEMENT</div><h3>Atlassian service workflows</h3><p>Configured Jira projects, workflows, permissions, Jira Automation, dashboards and a Jira Service Management customer portal; maintained Confluence SOPs.</p><div class="tags"><span class="tag">Jira</span><span class="tag">JSM</span><span class="tag">Confluence</span></div></article>
+<article class="project reveal delay-3"><div class="number">04 / ENDPOINT OPERATIONS</div><h3>Endpoint deployment & compliance</h3><p>Deployed three business applications and configured compliance and configuration policies through Intune; supported Apple device management through Kandji (Iru).</p><div class="tags"><span class="tag">Intune</span><span class="tag">Kandji</span><span class="tag">Apple Business Manager</span></div></article>
+<article class="project reveal"><div class="number">05 / NETWORK INFRASTRUCTURE</div><h3>Multi-office Omada Wi-Fi</h3><p>Managed TP-Link Omada controller Wi-Fi across Mumbai, Delhi and Pune, including access points, guest policies, client monitoring and controller configuration.</p><div class="tags"><span class="tag">TP-Link Omada</span><span class="tag">Wi-Fi</span><span class="tag">Network operations</span></div></article>
+<article class="project reveal delay-1"><div class="number">06 / COST GOVERNANCE</div><h3>Software & cloud cost reviews</h3><p>Reviewed licences and invoices across Microsoft, AWS, GoDaddy and MongoDB, contributing to lower Microsoft licence and AWS billing.</p><div class="tags"><span class="tag">Licence optimisation</span><span class="tag">AWS</span><span class="tag">Microsoft 365</span></div></article>
+</div></div></section>
 
-    <section aria-labelledby="projects">
-      <h2 id="projects">Project</h2>
-      <article class="project">
-        <h3>AWS VPC peering</h3>
-        <p class="when">Neotas Development Pvt. Ltd.</p>
-        <p>Connected separate AWS VPCs with VPC peering so cloud resources could communicate privately over internal IP addresses, without sending traffic over the public internet. Alongside the VPN connectivity I managed, this gave developers and remote users secure access to cloud resources.</p>
-      </article>
-    </section>
+<section id="impact"><div class="container"><div class="section-head reveal"><div class="kicker">05 / Operational impact</div><h2>Outcomes that support the business.</h2><p class="section-intro">Selected figures from my work. Cost and escalation improvements were team contributions, not individual-only results.</p></div>
+<div class="achievement-grid"><div class="achievement reveal"><strong data-count="200">0</strong><span>Approximate users supported at Neotas</span></div><div class="achievement reveal delay-1"><strong data-count="4">0</strong><span>Support engineers led and mentored</span></div><div class="achievement reveal delay-2"><strong data-count="50">0%</strong><span>Approximate reduction in escalations contributed to</span></div><div class="achievement reveal delay-3"><strong>30–40</strong><span>Developer AWS WorkSpaces supported</span></div></div>
+<p class="date" style="margin-top:18px">Additional cost-optimisation contributions: approximately EUR 1,000–2,000 in Microsoft licence billing and USD 500 in AWS billing.</p></div></section>
 
-    <section aria-labelledby="awards">
-      <h2 id="awards">Award</h2>
-      <article class="project">
-        <h3>Innovator Award</h3>
-        <p class="when">Neotas Development Pvt. Ltd., March 2022</p>
-      </article>
-    </section>
+<section id="credentials"><div class="container"><div class="section-head reveal"><div class="kicker">06 / Credentials</div><h2>Learning, practice and foundations.</h2></div>
+<div class="credentials">
+<div class="credential reveal"><b>ITIL 4 Foundation</b><span>PeopleCert</span></div><div class="credential reveal delay-1"><b>Jira User & Agile</b><span>Star Agile · 2024</span></div>
+<div class="credential reveal delay-2"><b>Generative AI</b><span>upGrad & Microsoft</span></div><div class="credential reveal delay-3"><b>System Administrator</b><span>Aptech</span></div>
+<div class="credential reveal"><b>Hardware Specialist</b><span>Aptech</span></div><div class="credential reveal delay-1"><b>Bachelor of Commerce</b><span>University of Mumbai · 2017–2020</span></div>
+<div class="credential reveal delay-2"><b>Innovator Award</b><span>Neotas · March 2022</span></div><div class="credential reveal delay-3"><b>Languages</b><span>English C2 · German A1</span></div>
+</div></div></section>
 
-    <section aria-labelledby="skills">
-      <h2 id="skills">Skills</h2>
-      <dl class="skills">
-        <div class="row"><dt>Service desk</dt><dd>Freshservice, Jira Service Management, Zoho Support, VIP support, SLA management, ITIL 4, Confluence</dd></div>
-        <div class="row"><dt>Microsoft 365 and identity</dt><dd>Exchange Online, SharePoint, OneDrive, Teams, Entra ID, Conditional Access, MFA</dd></div>
-        <div class="row"><dt>Endpoint</dt><dd>Intune, Kandji (Iru), Windows, macOS</dd></div>
-        <div class="row"><dt>AWS</dt><dd>IAM, Identity Center, EC2, S3, WorkSpaces, VPC/VPN</dd></div>
-        <div class="row"><dt>Admin tools</dt><dd>Jira, Zoho Vault, Git, PostgreSQL, MongoDB, Airflow troubleshooting</dd></div>
-        <div class="row"><dt>Scripting and dev tools</dt><dd>PowerShell, Docker, Postman</dd></div>
-      </dl>
-    </section>
+<section id="contact"><div class="container"><div class="contact-panel reveal"><div class="kicker">07 / Get in touch</div><h2>Let's make technology work better.</h2>
+<p>Open to international opportunities in IT Operations, Microsoft 365 Administration, Systems Administration and Cloud Support. Based in Mumbai, India; open to relocation to Europe and the UK. Employer visa sponsorship required.</p>
+<div class="contact-links"><a class="button primary" href="mailto:ilyasmohammed661@gmail.com">Email me ↗</a><a class="button secondary" href="https://www.linkedin.com/in/hanif-shaikh-0b3500125" target="_blank" rel="noopener">LinkedIn ↗</a><a class="button secondary" href="https://github.com/shaikh-hanif" target="_blank" rel="noopener">GitHub ↗</a></div>
+</div></div></section>
+</main>
+<footer class="container footer"><span>© 2026 Mohammed Hanif Shaikh</span><span>IT Operations · Microsoft 365 · Cloud & Systems Administration</span><a href="#top">Back to top ↑</a></footer>
+<script>
+(()=>{
+const nav=document.querySelector('.nav'),menu=document.getElementById('menuBtn'),links=document.getElementById('navLinks');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>24),{passive:true});
+menu.addEventListener('click',()=>{const open=links.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.textContent=open?'×':'☰'});
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.textContent='☰'}));
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const revealObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObs.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal:not(.visible)').forEach(el=>revealObs.observe(el));
+const navObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.querySelectorAll('a').forEach(a=>a.classList.toggle('active',a.hash==='#'+e.target.id))}),{rootMargin:'-35% 0px -55% 0px'});
+document.querySelectorAll('main section[id]').forEach(s=>navObs.observe(s));
+const counters=document.querySelectorAll('[data-count]'),counterObs=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target,target=+el.dataset.count;let start;function tick(t){start??=t;const p=Math.min((t-start)/1100,1);el.textContent=Math.round(target*(1-Math.pow(1-p,3)))+(target===50?'%':'+');if(p<1)requestAnimationFrame(tick)}requestAnimationFrame(tick);counterObs.unobserve(el)}),{threshold:.6});counters.forEach(c=>counterObs.observe(c));
+const canvas=document.getElementById('network'),ctx=canvas.getContext('2d');let w,h,nodes=[],raf;
+function resize(){const d=Math.min(devicePixelRatio||1,1.5);w=innerWidth;h=innerHeight;canvas.width=w*d;canvas.height=h*d;canvas.style.width=w+'px';canvas.style.height=h+'px';ctx.setTransform(d,0,0,d,0,0);nodes=Array.from({length:Math.max(22,Math.min(65,Math.floor(w*h/20000)))},()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.16,vy:(Math.random()-.5)*.16,r:Math.random()*1.3+.5}))}
+function draw(){ctx.clearRect(0,0,w,h);for(let i=0;i<nodes.length;i++){const a=nodes[i];if(!reduced){a.x+=a.vx;a.y+=a.vy;if(a.x<0||a.x>w)a.vx*=-1;if(a.y<0||a.y>h)a.vy*=-1}for(let j=i+1;j<nodes.length;j++){const b=nodes[j],d=Math.hypot(a.x-b.x,a.y-b.y);if(d<145){ctx.strokeStyle='rgba(111,174,231,'+((1-d/145)*.18)+')';ctx.lineWidth=.7;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}}ctx.fillStyle='rgba(135,204,238,.55)';ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,Math.PI*2);ctx.fill()}if(!reduced)raf=requestAnimationFrame(draw)}
+resize();draw();addEventListener('resize',()=>{cancelAnimationFrame(raf);resize();draw()},{passive:true});
+})();
+</script>
+</body></html>'''
 
-    <section aria-labelledby="education">
-      <h2 id="education">Certifications and education</h2>
-      <ul class="plain">
-        <li>ITIL 4 Foundation (PeopleCert)</li>
-        <li>Generative AI (upGrad and Microsoft)</li>
-        <li>System Administrator (Aptech)</li>
-        <li>Hardware Specialist (Aptech)</li>
-        <li>B.Com, University of Mumbai, 2017 to 2020</li>
-      </ul>
-    </section>
-
-    <footer>&copy; 2026 Hanif Shaikh</footer>
-  </main>
-
-</div>
-</body>
-</html>
+path = Path("/mnt/data/index.html")
+path.write_text(html, encoding="utf-8")
+print(f"Created {path} ({path.stat().st_size:,} bytes)")
